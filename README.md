@@ -70,4 +70,4 @@ This script was created with the help of **DeepSeek-V3** AI. Special thanks to D
 
 ## Support
 
-If you encounter any issues or have suggestions, please open an issue on the [GitHub repository](https://github.com/okayah/town-of-us-switcher/issues).
+If you encounter any issues or have suggestions, please open an issue on the [GitHub repository](https://github.com/okayah/town-of-us-toggle/issues).
