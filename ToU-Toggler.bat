@@ -1,5 +1,5 @@
 @echo off
-setlocal
+setlocal enabledelayedexpansion
 
 :: Credits: This script was created with the assistance of DeepSeek-V3, an AI developed by DeepSeek.
 
@@ -16,10 +16,29 @@ set "FILES=doorstop_config.ini steam_appid.txt winhttp.dll"
 
 :: Check if files/folders are in the game directory
 set "MOVE_TO_MODS=0"
+set "IS_INSTALLED=0"
+
+
 for %%F in (%FOLDERS% %FILES%) do (
+    :: Check if Town of Us is installed
+    if exist "%GAME_DIR%\%%F" (
+        set "IS_INSTALLED=1"
+    )
+    if exist "%MODS_DIR%\%%F" (
+        set "IS_INSTALLED=1"
+    )
+
     if exist "%GAME_DIR%\%%F" set "MOVE_TO_MODS=1"
 )
 
+:: If Town of Us is not installed then error
+if "!IS_INSTALLED!"=="0" (
+    echo Error: Could not find Town Of Us in either the game directory or mods directory.
+    echo Please ensure you have installed the latest version of Town Of Us.
+    pause
+    exit /b 1
+)
+   
 :: Move items
 if "%MOVE_TO_MODS%"=="1" (
     echo Moving files/folders to mods directory...
